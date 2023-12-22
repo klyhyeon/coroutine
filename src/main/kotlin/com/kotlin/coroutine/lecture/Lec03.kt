@@ -3,10 +3,6 @@ package com.kotlin.coroutine.lecture
 import kotlinx.coroutines.*
 import kotlin.system.measureTimeMillis
 
-class Lec03 {
-
-}
-
 fun main(): Unit = runBlocking {
 //    apiCall1(object: Callback { // callback 지옥!!
 //        apiCall2(object: Callback)
@@ -14,7 +10,8 @@ fun main(): Unit = runBlocking {
 
     val time = measureTimeMillis {
         val job1 = async(start = CoroutineStart.LAZY) { apiCall1() } // callback 방식이 아닌 동기방식으로 쓸 수 있다.
-        val job2 = async(start = CoroutineStart.LAZY) { apiCall2() } // LAZY 옵션을 쓰면 끝날때까지 기다림. start()를 쓰면 같이 기다려서 로딩이 두 배 걸리지 않음
+        val job2 =
+            async(start = CoroutineStart.LAZY) { apiCall2() } // LAZY 옵션을 쓰면 끝날때까지 기다림. start()를 쓰면 같이 기다려서 로딩이 두 배 걸리지 않음
 
         job1.start()
         job2.start()
